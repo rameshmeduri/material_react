@@ -1,11 +1,12 @@
 import React from 'react';
-
 import Header from './Header';
+import Content from './Content';
 
-const Root = () => (
+const App = () => (
     <div>
         <Header />
+        <Content />
     </div>
 );
 
-export default Root;
+export default App;

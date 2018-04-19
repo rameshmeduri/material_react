@@ -1,14 +1,9 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import IconButton from 'material-ui/IconButton';
+import { withStyles, AppBar, Toolbar, Typography, IconButton } from 'material-ui';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from 'material-ui/Switch';
-import { FormControlLabel, FormGroup } from 'material-ui/Form';
+import { Notifications, Dashboard, AccountCircle } from "@material-ui/icons";
 import Menu, { MenuItem } from 'material-ui/Menu';
+
 
 const styles = {
   root: {
@@ -47,25 +42,20 @@ class MenuAppBar extends React.Component {
     const open = Boolean(anchorEl);
 
     return (
+      //["inherit","primary","secondary","default"]
       <div className={classes.root}>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup>
-        <AppBar position="static">
+        <AppBar color="inherit" position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              Title
+              Velocity
             </Typography>
             {auth && (
               <div>
+                <IconButton color="inherit"><Dashboard /></IconButton>
+                <IconButton color="inherit"><Notifications /></IconButton>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
                   aria-haspopup="true"
@@ -88,13 +78,13 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleClose}>My Account</MenuItem>
+                  <MenuItem onClick={this.handleClose}>Logout</MenuItem>
                 </Menu>
               </div>
             )}
           </Toolbar>
-        </AppBar>
+        </AppBar>        
       </div>
     );
   }
